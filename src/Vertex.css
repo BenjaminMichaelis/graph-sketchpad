@@ -1,0 +1,15 @@
+.Vertex {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -0.5rem;
+    margin-top: -0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background: black;
+    border-radius: 1rem;
+}
+
+.Vertex.container {
+    position: fixed;
+}
