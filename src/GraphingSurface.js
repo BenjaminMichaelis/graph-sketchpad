@@ -15,7 +15,7 @@ function GraphingSurface(props) {
         setVertices(copy);
     }
 
-    const graphingClick = (event) => {
+    const graphClick = (event) => {
         const x = event.clientX;
         const y = event.clientY;
         addVertex({position: [x, y]});
@@ -49,7 +49,7 @@ function GraphingSurface(props) {
     return (
         <div
             className="GraphingSurface"
-            onMouseDown={graphingClick}
+            onMouseDown={graphClick}
             onMouseMove={onMouseMove}
             onMouseUp={stopDrag}
             ref={root}
