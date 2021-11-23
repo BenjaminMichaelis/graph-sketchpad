@@ -4,6 +4,7 @@ import './GraphingSurface.css';
 import Vertex from "./Vertex"
 import Edge from "./Edge"
 import ClickAction from "./ClickAction";
+import EdgeContainer from './EdgeContainer';
 
 function GraphingSurface(props)
 {
@@ -42,13 +43,27 @@ function GraphingSurface(props)
         {
             startAddEdge(index)
         }
+        else if (clickAction === ClickAction.DELETE) 
+        {
+            removeVertex(index)
+        }
     }
-
+    
     const moveVertex = (index, newPosition) =>
     {
         const copy = [...vertices]
         copy[index].position = newPosition
         setVertices(copy);
+    }
+
+    const removeVertex = (index) => {
+        const vertex = vertices[index];
+        const edgesToRemove = edgesWithEndpoint(vertex);
+        const edgeCopy = [...edges].filter((edge) => !edgesToRemove.includes(edge))
+        setEdges(edgeCopy)
+        const vertexCopy = [...vertices];
+        vertexCopy.splice(index, 1);
+        setVertices(vertexCopy);
     }
 
     const startDrag = (index) =>
@@ -82,6 +97,27 @@ function GraphingSurface(props)
         }
     }
 
+    const edgesWithEndpoint = (vertex) => 
+    {
+        return edges.filter((edge) => edge.endpoints.includes(vertex))
+    }
+
+    const removeEdge = (index) => 
+    {
+        const copy = [...edges];
+        copy.splice(index, 1)
+        setEdges(copy);
+    }
+
+    const onEdgeClick = (event, index) => 
+    {
+        if (clickAction === ClickAction.DELETE)
+        {
+            event.stopPropagation()
+            removeEdge(index)
+        }
+    }
+
     const onMouseMove = (event) =>
     {
         if (dragging !== null)
@@ -101,22 +137,19 @@ function GraphingSurface(props)
         >
             {vertices.map((vertex, index) =>
             {
-                return (<Vertex
-                    className={index === startEdge ? 'Vertex-Selected' : ''}
-                    vertex={vertex}
-                    key={index}
-                    onClick={(event) => onVertexClick(event,index)}
-                />)
-            })}
-            {edges.map((edge, index) =>
-            {
                 return (
-                    <Edge
-                        edge={edge}
+                    <Vertex
+                        className={index === startEdge ? 'Vertex-Selected' : ''}
+                        vertex={vertex}
                         key={index}
+                        onClick={(event) => onVertexClick(event,index)}
                     />
                 )
             })}
+            <EdgeContainer
+                edges={edges}
+                onClick={onEdgeClick}
+            />
         </div>
     );
 }
