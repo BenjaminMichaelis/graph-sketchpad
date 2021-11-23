@@ -7,19 +7,20 @@ import ClickAction from "./ClickAction";
 
 function GraphingSurface(props) {
     const {clickAction} = props
-    const [dragging, setDragging] = useState(null);
     const [vertices, setVertices] = useState([]);
     const [startEdge, setStartEdge] =useState(null);
+    const [dragging, setDragging] = useState(null);
     const [edges, setEdges] = useState([])
     const root = useRef()
 
-    const addVertex = (newVertex) => {
+    const addVertex = (newVertex) =>
+    {
         const copy = [...vertices];
         copy.push(newVertex)
         setVertices(copy);
     }
 
-    const onClick = (event) => 
+    const onClick = (event) =>
     {
         if (clickAction === ClickAction.ADD_VERTEX) 
         {
@@ -29,7 +30,7 @@ function GraphingSurface(props) {
         }
     }
 
-    const onVertexClick = (event, index) => 
+    const onVertexClick = (event, index) =>
     {
         event.stopPropagation()
         if (clickAction === ClickAction.SELECT)
@@ -42,17 +43,20 @@ function GraphingSurface(props) {
         }
     }
 
-    const moveVertex = (index, newPosition) => {
+    const moveVertex = (index, newPosition) =>
+    {
         const copy = [...vertices]
         copy[index].position = newPosition
         setVertices(copy);
     }
 
-    const startDrag = (index) => {
+    const startDrag = (index) =>
+    {
         setDragging(index)
     }
 
-    const stopDrag = (event) => {
+    const stopDrag = (event) =>
+    {
         event.preventDefault()
         setDragging(null)
     }
@@ -64,8 +68,9 @@ function GraphingSurface(props) {
         setEdges(copy);
     }
 
-    const startAddEdge = (index) => {
-        if(startEdge===null)
+    const startAddEdge = (index) =>
+    {
+        if(startEdge === null)
         {
             setStartEdge(index)
         }
@@ -86,7 +91,7 @@ function GraphingSurface(props) {
     return (
         <div
             className="GraphingSurface"
-            onMouseDown={onClick}
+            onClick={onClick}
             onMouseMove={onMouseMove}
             onMouseUp={stopDrag}
             ref={root}
@@ -97,8 +102,7 @@ function GraphingSurface(props) {
                     className={index === startEdge ? 'Vertex-Selected' : ''}
                     vertex={vertex}
                     key={index}
-                    onMouseDown={(event) => onVertexClick(event,index)}
-                    startDrag={(event) => startDrag(event, index)}
+                    onClick={(event) => onVertexClick(event,index)}
                 />)
             })}
             {edges.map((edge, index) =>
