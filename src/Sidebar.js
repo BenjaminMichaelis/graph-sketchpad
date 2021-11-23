@@ -27,8 +27,7 @@ function Sidebar(props)
     [
         {icon: <FontAwesomeIcon icon={faMousePointer}/>, name: 'Select', currentClickAction: ClickAction.SELECT},
         {icon: <FontAwesomeIcon icon={faDotCircle}/>, name: 'New Vertex', currentClickAction: ClickAction.ADD_VERTEX},
-        {icon: <FontAwesomeIcon icon={faLongArrowAltRight}/>, name: 'New Directed Edge', currentClickAction: ClickAction.ADD_DIRECTED_EDGE},
-        {icon: <FontAwesomeIcon icon={faProjectDiagram}/>, name: 'New Undirected Edge', currentClickAction: ClickAction.ADD_UNDIRECTED_EDGE},
+        {icon: <FontAwesomeIcon icon={faProjectDiagram}/>, name: 'New Edge', currentClickAction: ClickAction.ADD_EDGE},
         {icon: <FontAwesomeIcon icon={faTrash}/>, name: 'Delete', currentClickAction: ClickAction.DELETE}
     ]
 

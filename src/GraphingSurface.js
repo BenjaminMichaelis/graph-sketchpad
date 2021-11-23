@@ -39,7 +39,7 @@ function GraphingSurface(props)
         {
             startDrag(index)
         }
-        else if (clickAction === ClickAction.ADD_UNDIRECTED_EDGE)
+        else if (clickAction === ClickAction.ADD_EDGE)
         {
             startAddEdge(index)
         }

@@ -2,9 +2,10 @@ const ClickAction =
 {
     SELECT: "Select",
     ADD_VERTEX: "AddVertex",
-    ADD_UNDIRECTED_EDGE: "AddUndirectedEdge",
+    ADD_EDGE: "AddEdge",
     ADD_DIRECTED_EDGE: "AddDirectedEdge",
-    DELETE: "Delete"
+    DELETE: "Delete",
+    COLOR: "Color"
 }
 
 export default ClickAction;
