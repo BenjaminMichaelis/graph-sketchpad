@@ -7,6 +7,7 @@ function Edge(props)
     const [start, end] = edge.endpoints
     const [x1, y1] = start.position
     const [x2, y2] = end.position
+    const color = edge.color
 
     const rem2px = (rem) => 
     {
@@ -19,7 +20,7 @@ function Edge(props)
                 onClick={onClick}
                 className='Edge-Path'
                 fill='none'
-                stroke='black'
+                stroke={color}
                 strokeWidth='3'
                 d={
                     `M ${x1 - rem2px(10-1)} ${y1}

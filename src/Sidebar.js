@@ -4,10 +4,12 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDotCircle, faLongArrowAltRight, faMousePointer, faProjectDiagram, faTrash} from "@fortawesome/free-solid-svg-icons";
 import ClickAction from "./ClickAction";
 import './Sidebar.css'
+import './SidebarButton.css';
+import { CirclePicker } from 'react-color'
 
 function Sidebar(props)
 {
-    const {clickAction, setClickAction} = props
+    const {clickAction, setClickAction, color, setColor} = props
 
     const makeButton = ({icon, name, currentClickAction}) =>
     {
@@ -34,6 +36,17 @@ function Sidebar(props)
     return (
         <div className="Sidebar">
             {buttonData.map(element => makeButton(element))}
+            {/* https://casesandberg.github.io/react-color/ */}
+            <CirclePicker
+                color = {color}
+                onChange={(color, event) => setColor(color.hex)}
+                width="auto"
+                margin-top="15px"
+                padding-top="15px"
+                margin-left="auto"
+                margin-right="auto"
+                height="auto"
+            />
         </div>
     );
 }
