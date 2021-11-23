@@ -5,10 +5,12 @@ import {faDotCircle, faLongArrowAltRight, faMousePointer, faProjectDiagram} from
 import ClickAction from "./ClickAction";
 import './Sidebar.css'
 
-function Sidebar(props) {
+function Sidebar(props)
+{
     const {clickAction, setClickAction} = props
 
-    const makeButton = ({icon, name, currentClickAction}) => {
+    const makeButton = ({icon, name, currentClickAction}) =>
+    {
         return (
             <SidebarButton
                 icon={icon}
@@ -21,7 +23,8 @@ function Sidebar(props) {
         )
     }
 
-    const buttonData = [
+    const buttonData =
+    [
         {icon: <FontAwesomeIcon icon={faMousePointer}/>, name: 'Select', currentClickAction: ClickAction.SELECT},
         {icon: <FontAwesomeIcon icon={faDotCircle}/>, name: 'New Vertex', currentClickAction: ClickAction.ADD_VERTEX},
         {icon: <FontAwesomeIcon icon={faLongArrowAltRight}/>, name: 'New Directed Edge', currentClickAction: ClickAction.ADD_DIRECTED_EDGE},

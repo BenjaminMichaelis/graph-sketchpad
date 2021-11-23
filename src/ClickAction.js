@@ -1,4 +1,5 @@
-const ClickAction = {
+const ClickAction =
+{
     SELECT: "Select",
     ADD_VERTEX: "AddVertex",
     ADD_UNDIRECTED_EDGE: "AddUndirectedEdge",
