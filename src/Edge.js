@@ -3,7 +3,7 @@ import './Edge.css'
 
 function Edge(props) 
 {
-    const {edge} = props
+    const {edge, onClick} = props
     const [start, end] = edge.endpoints
     const [x1, y1] = start.position
     const [x2, y2] = end.position
@@ -16,6 +16,7 @@ function Edge(props)
     return (
         <svg className='Edge'>
             <path
+                onClick={onClick}
                 className='Edge-Path'
                 fill='none'
                 stroke='black'
