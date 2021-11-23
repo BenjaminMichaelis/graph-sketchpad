@@ -5,12 +5,12 @@ import {doCustom} from "./clickActionSlice";
 import './SidebarButton.css'
 
 function SidebarButton(props) {
-    const {icon, name, clickAction, currentClickAction, doCustom} = props
+    const {icon, name, clickAction, currentClickAction, setClickAction} = props
     return (
         <Button
             className="SidebarButton"
             variant="primary"
-            onClick={() => doCustom(clickAction)}
+            onClick={() => setClickAction(currentClickAction)}
             active={clickAction === currentClickAction}
         >
             {icon}
@@ -19,10 +19,4 @@ function SidebarButton(props) {
     )
 };
 
-const mapStateToProps = (state) => {
-    return {currentClickAction: state.clickAction}
-};
-
-const mapDispatchToProps = {doCustom};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SidebarButton);
+export default SidebarButton
