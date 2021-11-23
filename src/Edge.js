@@ -1,13 +1,15 @@
 import React from "react";
 import './Edge.css'
 
-function Edge(props) {
+function Edge(props) 
+{
     const {edge} = props
     const [start, end] = edge.endpoints
     const [x1, y1] = start.position
     const [x2, y2] = end.position
 
-    const rem2px = (rem) => {
+    const rem2px = (rem) => 
+    {
         return rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
     }
 

@@ -4,7 +4,8 @@ import {connect} from "react-redux"
 import {doCustom} from "./clickActionSlice";
 import './SidebarButton.css'
 
-function SidebarButton(props) {
+function SidebarButton(props)
+{
     const {icon, name, clickAction, currentClickAction, setClickAction} = props
     return (
         <Button

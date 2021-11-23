@@ -5,7 +5,8 @@ import Vertex from "./Vertex"
 import Edge from "./Edge"
 import ClickAction from "./ClickAction";
 
-function GraphingSurface(props) {
+function GraphingSurface(props)
+{
     const {clickAction} = props
     const [vertices, setVertices] = useState([]);
     const [startEdge, setStartEdge] =useState(null);
@@ -81,8 +82,10 @@ function GraphingSurface(props) {
         }
     }
 
-    const onMouseMove = (event) => {
-        if (dragging !== null) {
+    const onMouseMove = (event) =>
+    {
+        if (dragging !== null)
+        {
             event.preventDefault()
             moveVertex(dragging, [event.clientX, event.clientY])
         }

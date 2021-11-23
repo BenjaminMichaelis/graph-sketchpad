@@ -5,16 +5,17 @@ import './App.css';
 import GraphingSurface from './GraphingSurface';
 import ClickAction from './ClickAction';
 
-function App() {
+function App() 
+{
     const [clickAction, setClickAction] = useState(ClickAction.SELECT)
 
     return (
         <div className='App'>
-        <Sidebar 
+        <Sidebar
             clickAction={clickAction}
             setClickAction={setClickAction}
         />
-        <GraphingSurface 
+        <GraphingSurface
             clickAction={clickAction}
         />
         </div>
