@@ -12,15 +12,15 @@ function App()
 
     return (
         <div className='App'>
+        <GraphingSurface
+            clickAction={clickAction}
+            color={color}
+        />
         <Sidebar
             clickAction={clickAction}
             setClickAction={setClickAction}
             color={color}
             setColor={setColor}
-        />
-        <GraphingSurface
-            clickAction={clickAction}
-            color={color}
         />
         </div>
     );

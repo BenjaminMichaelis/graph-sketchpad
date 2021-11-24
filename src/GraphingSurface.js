@@ -4,7 +4,7 @@ import './GraphingSurface.css';
 import Vertex from "./Vertex"
 // import Edge from "./Edge"
 import ClickAction from "./ClickAction";
-import EdgeContainer from './EdgeContainer';
+import Edge from './Edge';
 import GraphInformation from './GraphInformation';
 
 function GraphingSurface(props)
@@ -237,25 +237,25 @@ function GraphingSurface(props)
             onMouseUp={stopDrag}
             ref={root}
         >
-            <GraphInformation
-                numVertices={numVertices()}
-                numEdges={numEdges()}
-                numComponents={numComponents()}
-            />
             {vertices.map((vertex, index) =>
             {
                 return (
                     <Vertex
-                        className={index === startEdge ? 'Vertex-Selected' : ''}
-                        vertex={vertex}
-                        key={index}
-                        onClick={(event) => onVertexClick(event, index)}
+                    className={index === startEdge ? 'Vertex-Selected' : ''}
+                    vertex={vertex}
+                    key={index}
+                    onClick={(event) => onVertexClick(event, index)}
                     />
-                )
-            })}
-            <EdgeContainer
+                    )
+                })}
+            <Edge
                 edges={edges}
                 onClick={onEdgeClick}
+            />
+            <GraphInformation
+                numVertices={numVertices()}
+                numEdges={numEdges()}
+                numComponents={numComponents()}
             />
         </div>
     );

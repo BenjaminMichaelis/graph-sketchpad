@@ -1,14 +1,39 @@
-.Sidebar
+@media screen and (max-width: 600px)
 {
-    height: 100%;
-    width: 15rem;
-    padding: 1%;
-    background-color:lightgray;
-    border-right-color: black;
-    border-right: 1px;
-    border-right-style: solid;
-    flex-shrink: 0;
-    z-index: 10;
+    .Sidebar
+    {
+        min-height: 100%;
+        width: 8rem;
+        padding: .5%;
+        background-color:lightgray;
+        border-right-color: black;
+        border-right: 1px;
+        border-right-style: solid;
+        border-left-color: black;
+        border-left: 1px;
+        border-left-style: solid;
+        flex-shrink: 2;
+        z-index: 10;
+    }
+}
+
+@media screen and (min-width: 600px)
+{
+    .Sidebar
+    {
+        height: 100%;
+        width: 15rem;
+        padding: 1%;
+        background-color:lightgray;
+        border-right-color: black;
+        border-right: 1px;
+        border-right-style: solid;
+        border-left-color: black;
+        border-left: 1px;
+        border-left-style: solid;
+        flex-shrink: 0;
+        z-index: 10;
+    }
 }
 
 .Sidebar-ColorPicker

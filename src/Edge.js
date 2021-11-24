@@ -1,48 +1,62 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
+import EdgeSlice from "./EdgeSlice";
 import './Edge.css'
 
-function Edge(props) 
+function Edge(props)
 {
-    const {edge, onClick, offsetLeft, multiplicity} = props
-    const [start, end] = edge.endpoints
-    const isLoop = start === end;
-    const [x1, y1] = [start.position[0] - offsetLeft, start.position[1]]
-    const [x2, y2] = [end.position[0] - offsetLeft, end.position[1]]
-    const color = edge.color
+    const {edges, onClick} = props
+    const [offsetLeft, setOffsetLeft] = useState(null);
+    const svg = useRef();
 
-
-    let d;
-    // loop is determined if the start vertex is equal to the end vertex
-    if (isLoop)
+    useEffect(() =>
     {
-        const radius = 35 + (multiplicity * 10);
-        const far = Math.sqrt(2) * radius
-        d = `M ${x1} ${y1}
-             a ${radius},${radius} 0 0 1 ${-far},${-far}
-             a ${radius},${radius} 0 1 1 ${far},${far}`
-    }
-    else
-    {
-        const magnitude = Math.sqrt(Math.pow(x1-x2, 2) + Math.pow(y1-y2, 2))
-        const [vx, vy] = [(y2-y1) / magnitude, -(x2-x1) / magnitude]
-        const distance = 25 * Math.ceil(multiplicity / 2)
-        const direction = Math.pow(-1, multiplicity) * (vx >= vy ? (vx === vy ? (x1 > x2 ? 1 : -1) : 1) : -1)
-        const [midX, midY] = [(x1 + x2)/2, (y1 + y2)/2]
-        const [x3, y3] = [midX + (distance * direction * vx), midY + (distance * direction * vy)]
+        setOffsetLeft(svg.current.parentElement.offsetLeft)
+    }, []);
 
-        d = `M ${x1} ${y1}
-             Q ${x3} ${y3} ${x2} ${y2}`
-    }
-
+    const seenEndpoints = []
     return (
-        <path
-            onClick={onClick}
-            className='Edge-Path'
-            fill='transparent'
-            stroke={color}
-            strokeWidth='3'
-            d={d}
-        />
+        <svg className='Edge' ref={svg} pointerEvents='visibleStroke'>
+            {edges.map((edge, index) =>
+            {
+                // start the number of edges between two vertices at 0
+                let overlappingEdges = 0;
+                for (let i = 0; i < seenEndpoints.length; i++) 
+                {
+                    // If the edge just placed has the same vertices as existing vertices (so it is the same line)
+                    if ((edge.endpoints[0] === seenEndpoints[i].endpoints[0]
+                        && edge.endpoints[1] === seenEndpoints[i].endpoints[1])
+                        || (edge.endpoints[0] === seenEndpoints[i].endpoints[1]
+                            && edge.endpoints[1] === seenEndpoints[i].endpoints[0]))
+                    {
+                        overlappingEdges = seenEndpoints[i].overlappingEdges;
+                        // increase the number of edges that are now overlapping to know where the next edge needs to be placed
+                        seenEndpoints[i].overlappingEdges++;
+                        return (
+                            <EdgeSlice
+                                edge={edge}
+                                key={index}
+                                onClick={(event) => onClick(event, index)}
+                                offsetLeft={offsetLeft}
+                                overlappingEdges={overlappingEdges}
+                            />
+                        )
+                    }
+                }
+                // If there are no edges that are overlapping (this isn't an edge we've drawn before) then
+                // just do what we were already doing, but make sure to save the information that the next edge 
+                // is no longer the first edge between these two vertices
+                seenEndpoints.push({endpoints: edge.endpoints, overlappingEdges: 1})
+                return (
+                    <EdgeSlice
+                        edge={edge}
+                        key={index}
+                        onClick={(event) => onClick(event, index)}
+                        offsetLeft={offsetLeft}
+                        overlappingEdges={overlappingEdges}
+                    />
+                )
+            })}
+        </svg>
     )
 }
 

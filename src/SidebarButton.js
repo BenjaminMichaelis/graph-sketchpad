@@ -8,7 +8,7 @@ function SidebarButton(props)
     return (
         <Button
             className="SidebarButton"
-            variant="primary"
+            variant="outline-primary"
             onClick={() => setClickAction(currentClickAction)}
             active={clickAction === currentClickAction}
         >

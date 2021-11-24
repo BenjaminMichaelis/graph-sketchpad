@@ -1,11 +1,42 @@
-.GraphInformation {
-    position: absolute;
-    margin: 2rem;
-    border-width: 3px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: cornflowerblue;
-    padding: 1rem;
-    z-index: 8;
-    pointer-events: none;
+
+@media screen and (max-width: 600px)
+{
+    .GraphInformation
+    {
+        position: absolute;
+        border-width: 3px;
+        border-radius: 3px;
+        border-style: solid;
+        border-color: rgba(109, 197, 238, 0.900);
+        background-blend-mode: luminosity;
+        background-color: aquamarine;
+        background: rgba(109, 197, 238, 0.336);
+        margin: .2rem;
+        padding: .1rem;
+        z-index: 8;
+        pointer-events: none;
+        left: .2%;
+        text-size-adjust: auto;
+        font-size: small;
+    }
+}
+
+@media screen and (min-width: 600px)
+{
+    .GraphInformation
+    {
+        position: absolute;
+        border-width: 3px;
+        border-radius: 3px;
+        border-style: solid;
+        border-color: rgba(109, 197, 238, 0.900);
+        background-blend-mode: luminosity;
+        background-color: aquamarine;
+        background: rgba(109, 197, 238, 0.336);
+        margin: 2rem;
+        padding: .75rem;
+        z-index: 8;
+        pointer-events: none;
+        left: 1%;
+    }
 }
