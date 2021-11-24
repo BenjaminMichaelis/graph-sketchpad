@@ -8,7 +8,7 @@ import ClickAction from './ClickAction';
 function App() 
 {
     const [clickAction, setClickAction] = useState(ClickAction.SELECT)
-    const [color, setColor] = useState('#000000');
+    const [color, setColor] = useState('#607d8b');
 
     return (
         <div className='App'>

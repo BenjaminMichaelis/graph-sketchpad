@@ -1,6 +1,7 @@
-.Sidebar {
+.Sidebar
+{
     height: 100%;
-    width: 20%;
+    width: 15rem;
     padding: 1%;
     background-color:lightgray;
     border-right-color: black;

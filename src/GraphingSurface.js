@@ -10,7 +10,7 @@ function GraphingSurface(props)
 {
     const {clickAction, color} = props
     const [vertices, setVertices] = useState([]);
-    const [startEdge, setStartEdge] =useState(null);
+    const [startEdge, setStartEdge] = useState(null);
     const [dragging, setDragging] = useState(null);
     const [edges, setEdges] = useState([])
     const root = useRef()
@@ -60,7 +60,8 @@ function GraphingSurface(props)
         setVertices(copy);
     }
 
-    const removeVertex = (index) => {
+    const removeVertex = (index) =>
+    {
         const vertex = vertices[index];
         const edgesToRemove = edgesWithEndpoint(vertex);
         const edgeCopy = [...edges].filter((edge) => !edgesToRemove.includes(edge))
@@ -103,7 +104,7 @@ function GraphingSurface(props)
         }
         else
         {
-            addEdge({endpoints: [vertices[startEdge],vertices[index]], color: color})
+            addEdge({endpoints: [vertices[startEdge], vertices[index]], color: color})
             setStartEdge(null)
         }
     }
@@ -119,7 +120,6 @@ function GraphingSurface(props)
         copy.splice(index, 1)
         setEdges(copy);
     }
-
     const colorEdge = (index, color) =>
     {
         const copy = [...edges];
@@ -134,7 +134,7 @@ function GraphingSurface(props)
             event.stopPropagation()
             removeEdge(index)
         }
-        if (clickAction === ClickAction.COLOR)
+        else if (clickAction === ClickAction.COLOR)
         {
             colorEdge(index, color)
         }
@@ -157,14 +157,13 @@ function GraphingSurface(props)
             onMouseUp={stopDrag}
             ref={root}
         >
-            {vertices.map((vertex, index) =>
-            {
+            {vertices.map((vertex, index) => {
                 return (
                     <Vertex
                         className={index === startEdge ? 'Vertex-Selected' : ''}
                         vertex={vertex}
                         key={index}
-                        onClick={(event) => onVertexClick(event,index)}
+                        onClick={(event) => onVertexClick(event, index)}
                     />
                 )
             })}
