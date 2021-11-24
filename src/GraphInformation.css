@@ -6,4 +6,5 @@
     border-style: solid;
     border-color: cornflowerblue;
     padding: 1rem;
+    z-index: 8;
 }
