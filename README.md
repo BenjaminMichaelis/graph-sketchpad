@@ -10,6 +10,7 @@ A simple graph theory application (also known as a graph theorists sketchpad) th
 * Deletion of vertices and edges
 * Ability to color or label vertices
 * Information about numbers of vertices, edges, and components
+* Parallel edges and loops
 
 ## To run locally
 
