@@ -5,6 +5,7 @@ import Vertex from "./Vertex"
 // import Edge from "./Edge"
 import ClickAction from "./ClickAction";
 import EdgeContainer from './EdgeContainer';
+import GraphInformation from './GraphInformation';
 
 function GraphingSurface(props)
 {
@@ -140,6 +141,67 @@ function GraphingSurface(props)
         }
     }
 
+    const numVertices = () => {
+        return vertices.length
+    }
+
+    const numEdges = () => {
+        return edges.length
+    }
+
+    const adjacentVertices = (vertex) => {
+        return edgesWithEndpoint(vertex).map((edge) => {
+            return edge.endpoints
+        }).flat().filter((otherVertex) => otherVertex !== vertex)
+    }
+
+    const numComponents = () => {
+        let components = 0;
+        const verticesSeen = new Array(vertices.length).fill(false);
+        const dfs = (index) => {
+            verticesSeen[index] = true
+            for (const vertex of adjacentVertices(vertices[index])) {
+                const newIndex = vertices.indexOf(vertex)
+                if (!verticesSeen[newIndex]){
+                    dfs(newIndex)
+                }
+            }
+        }
+        for (let i = 0; i < vertices.length; i++) {
+            if (verticesSeen[i]) {
+                continue
+            }
+            dfs(i)
+            components++
+        }
+        return components
+    }
+
+    const isSimpleGraph = () => {
+        const endpointsSeen = []
+        for (const edge of edges) {
+            if (edge.endpoints in endpointsSeen) {
+                return false
+            } else if (edge.endpoints[0] === edge.endpoints[1]) {
+                return false
+            }
+            endpointsSeen.push(edge)
+        }
+        return true
+    }
+
+    const isNullGraph = () => {
+        return vertices.length === 0
+    }
+
+    const isTreeGraph = () => {
+        return isForestGraph() && numComponents() === 1
+    }
+
+    const isForestGraph = () => {
+        return numVertices() - numEdges() === numComponents() && isSimpleGraph()
+    }
+
     const onMouseMove = (event) =>
     {
         if (dragging !== null)
@@ -157,6 +219,11 @@ function GraphingSurface(props)
             onMouseUp={stopDrag}
             ref={root}
         >
+            <GraphInformation
+                numVertices={numVertices()}
+                numEdges={numEdges()}
+                numComponents={numComponents()}
+            />
             {vertices.map((vertex, index) => {
                 return (
                     <Vertex

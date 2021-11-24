@@ -1,0 +1,9 @@
+.GraphInformation {
+    position: absolute;
+    margin: 2rem;
+    border-width: 3px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: cornflowerblue;
+    padding: 1rem;
+}
