@@ -11,6 +11,7 @@ function Sidebar(props)
 {
     const {clickAction, setClickAction, color, setColor} = props
 
+    // Handle keypress to change menu selection
     window.addEventListener('keydown', keyPress, true);
 
     function keyPress(event)
