@@ -11,6 +11,33 @@ function Sidebar(props)
 {
     const {clickAction, setClickAction, color, setColor} = props
 
+    window.addEventListener('keydown', keyPress, true);
+
+    function keyPress(event)
+    {
+        console.log(event.keyCode);
+        if(event.key === 's' || event.key === 'S')
+        {
+            setClickAction(ClickAction.SELECT)
+        }
+        else if(event.key === 'v' || event.key === 'V')
+        {
+            setClickAction(ClickAction.ADD_VERTEX)
+        }
+        else if(event.key === 'e' || event.key === 'E')
+        {
+            setClickAction(ClickAction.ADD_EDGE)
+        }
+        else if(event.key === 'd' || event.key === 'D')
+        {
+            setClickAction(ClickAction.DELETE)
+        }
+        else if(event.key === 'c' || event.key === 'C')
+        {
+            setClickAction(ClickAction.COLOR)
+        }
+    }
+
     const makeButton = ({icon, name, currentClickAction}) =>
     {
         return (
@@ -27,11 +54,11 @@ function Sidebar(props)
 
     const buttonData =
     [
-        {icon: <FontAwesomeIcon icon={faMousePointer}/>, name: 'Select', currentClickAction: ClickAction.SELECT},
-        {icon: <FontAwesomeIcon icon={faDotCircle}/>, name: 'New Vertex', currentClickAction: ClickAction.ADD_VERTEX},
-        {icon: <FontAwesomeIcon icon={faProjectDiagram}/>, name: 'New Edge', currentClickAction: ClickAction.ADD_EDGE},
-        {icon: <FontAwesomeIcon icon={faTrash}/>, name: 'Delete', currentClickAction: ClickAction.DELETE},
-        {icon: <FontAwesomeIcon icon={faPaintBrush}/>, name: 'Color', currentClickAction: ClickAction.COLOR}
+        {icon: <FontAwesomeIcon icon={faMousePointer}/>, name: 'Select (s)', currentClickAction: ClickAction.SELECT},
+        {icon: <FontAwesomeIcon icon={faDotCircle}/>, name: 'New Vertex (v)', currentClickAction: ClickAction.ADD_VERTEX},
+        {icon: <FontAwesomeIcon icon={faProjectDiagram}/>, name: 'New Edge (e)', currentClickAction: ClickAction.ADD_EDGE},
+        {icon: <FontAwesomeIcon icon={faTrash}/>, name: 'Delete (d)', currentClickAction: ClickAction.DELETE},
+        {icon: <FontAwesomeIcon icon={faPaintBrush}/>, name: 'Color (c)', currentClickAction: ClickAction.COLOR}
     ]
 
     return (

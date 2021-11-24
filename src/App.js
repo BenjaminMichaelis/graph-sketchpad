@@ -10,17 +10,6 @@ function App()
     const [clickAction, setClickAction] = useState(ClickAction.SELECT)
     const [color, setColor] = useState('#607d8b');
 
-    window.addEventListener('keydown', keyPress, true);
-
-    function keyPress(event)
-    {
-        console.log(event.keyCode);
-        if(event.key === 's' || event.key === 'S')
-        {
-            setClickAction(ClickAction.SELECT)
-        }
-    }
-
     return (
         <div className='App'>
         <Sidebar
