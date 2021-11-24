@@ -141,34 +141,44 @@ function GraphingSurface(props)
         }
     }
 
-    const numVertices = () => {
+    const numVertices = () =>
+    {
         return vertices.length
     }
 
-    const numEdges = () => {
+    const numEdges = () =>
+    {
         return edges.length
     }
 
-    const adjacentVertices = (vertex) => {
-        return edgesWithEndpoint(vertex).map((edge) => {
+    const adjacentVertices = (vertex) => 
+    {
+        return edgesWithEndpoint(vertex).map((edge) =>
+        {
             return edge.endpoints
         }).flat().filter((otherVertex) => otherVertex !== vertex)
     }
 
-    const numComponents = () => {
+    const numComponents = () => 
+    {
         let components = 0;
         const verticesSeen = new Array(vertices.length).fill(false);
-        const dfs = (index) => {
+        const dfs = (index) => 
+        {
             verticesSeen[index] = true
-            for (const vertex of adjacentVertices(vertices[index])) {
+            for (const vertex of adjacentVertices(vertices[index]))
+            {
                 const newIndex = vertices.indexOf(vertex)
-                if (!verticesSeen[newIndex]){
+                if (!verticesSeen[newIndex])
+                {
                     dfs(newIndex)
                 }
             }
         }
-        for (let i = 0; i < vertices.length; i++) {
-            if (verticesSeen[i]) {
+        for (let i = 0; i < vertices.length; i++)
+        {
+            if (verticesSeen[i])
+            {
                 continue
             }
             dfs(i)
@@ -177,12 +187,17 @@ function GraphingSurface(props)
         return components
     }
 
-    const isSimpleGraph = () => {
+    const isSimpleGraph = () =>
+    {
         const endpointsSeen = []
-        for (const edge of edges) {
-            if (edge.endpoints in endpointsSeen) {
+        for (const edge of edges)
+        {
+            if (edge.endpoints in endpointsSeen)
+            {
                 return false
-            } else if (edge.endpoints[0] === edge.endpoints[1]) {
+            }
+            else if (edge.endpoints[0] === edge.endpoints[1])
+            {
                 return false
             }
             endpointsSeen.push(edge)
@@ -190,15 +205,18 @@ function GraphingSurface(props)
         return true
     }
 
-    const isNullGraph = () => {
+    const isNullGraph = () =>
+    {
         return vertices.length === 0
     }
 
-    const isTreeGraph = () => {
+    const isTreeGraph = () =>
+    {
         return isForestGraph() && numComponents() === 1
     }
 
-    const isForestGraph = () => {
+    const isForestGraph = () =>
+    {
         return numVertices() - numEdges() === numComponents() && isSimpleGraph()
     }
 
@@ -224,7 +242,8 @@ function GraphingSurface(props)
                 numEdges={numEdges()}
                 numComponents={numComponents()}
             />
-            {vertices.map((vertex, index) => {
+            {vertices.map((vertex, index) =>
+            {
                 return (
                     <Vertex
                         className={index === startEdge ? 'Vertex-Selected' : ''}
