@@ -1,7 +1,5 @@
 import React from "react"
 import Button from "react-bootstrap/Button"
-import {connect} from "react-redux"
-import {doCustom} from "./clickActionSlice";
 import './SidebarButton.css'
 
 function SidebarButton(props)

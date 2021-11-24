@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarButton from "./SidebarButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDotCircle, faLongArrowAltRight, faMousePointer, faProjectDiagram, faTrash, faPaintBrush} from "@fortawesome/free-solid-svg-icons";
+import {faDotCircle, faMousePointer, faProjectDiagram, faTrash, faPaintBrush} from "@fortawesome/free-solid-svg-icons";
 import ClickAction from "./ClickAction";
 import './Sidebar.css'
 import './SidebarButton.css';

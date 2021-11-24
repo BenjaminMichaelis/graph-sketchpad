@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import Sidebar from "./Sidebar";
 import './App.css';
 import GraphingSurface from './GraphingSurface';

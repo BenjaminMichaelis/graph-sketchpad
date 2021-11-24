@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React from "react";
 import './Vertex.css'
 
 
@@ -14,7 +14,6 @@ function Vertex(props)
             style={{top: `${y}px`, left: `${x}px`, background: color}}
             onMouseDown={onClick}
         >
-
         </div>
     );
 }

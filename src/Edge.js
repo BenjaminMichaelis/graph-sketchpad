@@ -9,10 +9,10 @@ function Edge(props)
     const [x2, y2] = end.position
     const color = edge.color
 
-    const rem2px = (rem) =>
-    {
-        return rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
-    }
+    // const rem2px = (rem) =>
+    // {
+    //     return rem * parseFloat(getComputedStyle(document.documentElement).fontSize)
+    // }
 
     return (
         <path

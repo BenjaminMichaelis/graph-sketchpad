@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import './GraphingSurface.css';
 
 import Vertex from "./Vertex"
-import Edge from "./Edge"
+// import Edge from "./Edge"
 import ClickAction from "./ClickAction";
 import EdgeContainer from './EdgeContainer';
 
