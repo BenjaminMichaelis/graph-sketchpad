@@ -8,15 +8,19 @@ import ClickAction from './ClickAction';
 function App() 
 {
     const [clickAction, setClickAction] = useState(ClickAction.SELECT)
+    const [color, setColor] = useState('#607d8b');
 
     return (
         <div className='App'>
         <Sidebar
             clickAction={clickAction}
             setClickAction={setClickAction}
+            color={color}
+            setColor={setColor}
         />
         <GraphingSurface
             clickAction={clickAction}
+            color={color}
         />
         </div>
     );

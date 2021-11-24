@@ -8,9 +8,9 @@ import EdgeContainer from './EdgeContainer';
 
 function GraphingSurface(props)
 {
-    const {clickAction} = props
+    const {clickAction, color} = props
     const [vertices, setVertices] = useState([]);
-    const [startEdge, setStartEdge] =useState(null);
+    const [startEdge, setStartEdge] = useState(null);
     const [dragging, setDragging] = useState(null);
     const [edges, setEdges] = useState([])
     const root = useRef()
@@ -28,7 +28,7 @@ function GraphingSurface(props)
         {
             const x = event.clientX;
             const y = event.clientY;
-            addVertex({position: [x, y]});
+            addVertex({position: [x, y], color: color});
         }
     }
 
@@ -47,6 +47,10 @@ function GraphingSurface(props)
         {
             removeVertex(index)
         }
+        else if (clickAction === ClickAction.COLOR)
+        {
+            colorVertex(index, color)
+        }
     }
     
     const moveVertex = (index, newPosition) =>
@@ -56,7 +60,8 @@ function GraphingSurface(props)
         setVertices(copy);
     }
 
-    const removeVertex = (index) => {
+    const removeVertex = (index) =>
+    {
         const vertex = vertices[index];
         const edgesToRemove = edgesWithEndpoint(vertex);
         const edgeCopy = [...edges].filter((edge) => !edgesToRemove.includes(edge))
@@ -64,6 +69,13 @@ function GraphingSurface(props)
         const vertexCopy = [...vertices];
         vertexCopy.splice(index, 1);
         setVertices(vertexCopy);
+    }
+
+    const colorVertex = (index, color) =>
+    {
+        const copy = [...vertices];
+        copy[index].color = color;
+        setVertices(copy);
     }
 
     const startDrag = (index) =>
@@ -92,7 +104,7 @@ function GraphingSurface(props)
         }
         else
         {
-            addEdge({endpoints: [vertices[startEdge],vertices[index]]})
+            addEdge({endpoints: [vertices[startEdge], vertices[index]], color: color})
             setStartEdge(null)
         }
     }
@@ -108,6 +120,12 @@ function GraphingSurface(props)
         copy.splice(index, 1)
         setEdges(copy);
     }
+    const colorEdge = (index, color) =>
+    {
+        const copy = [...edges];
+        copy[index].color = color;
+        setEdges(copy);
+    }
 
     const onEdgeClick = (event, index) => 
     {
@@ -115,6 +133,10 @@ function GraphingSurface(props)
         {
             event.stopPropagation()
             removeEdge(index)
+        }
+        else if (clickAction === ClickAction.COLOR)
+        {
+            colorEdge(index, color)
         }
     }
 
@@ -135,14 +157,13 @@ function GraphingSurface(props)
             onMouseUp={stopDrag}
             ref={root}
         >
-            {vertices.map((vertex, index) =>
-            {
+            {vertices.map((vertex, index) => {
                 return (
                     <Vertex
                         className={index === startEdge ? 'Vertex-Selected' : ''}
                         vertex={vertex}
                         key={index}
-                        onClick={(event) => onVertexClick(event,index)}
+                        onClick={(event) => onVertexClick(event, index)}
                     />
                 )
             })}
