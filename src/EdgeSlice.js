@@ -48,39 +48,46 @@ function EdgeSlice(props)
         console.log('angle to degree:',{changeInY,changeInX,radians,degrees})
         return degrees;
     }
-    let pointtt=`${x2},${y2} ${x2 + 20},${y2} ${x2+10},${y2-10}`
-    let deg = AngleBtw2Points()
-    let dd = `m ${x2} ${y2} ${deg -180},5l-10,5z`
+    let polygonTriangleforRight=`${x2-7},${y2-3} ${x2-20},${y2-10} ${x2-20},${y2+10}`
+    // let polygonTriangle=`${x2},${y2+3} ${x2+20},${y2+3} ${x2+12},${y2-10}`
+    let pointss=`${x2},${y2}, ${x2+10},${y2+20}, ${x2},${y2+7}`
+
+    // https://github.com/PimpTrizkit/PJs/wiki/12.-Shade,-Blend-and-Convert-a-Web-Color-(pSBC.js)#stackoverflow-archive-begin
+    function shadeHexColor(color, percent)
+    {
+        var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+        return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+    }
+    function shadeRGBColor(color, percent)
+    {
+        var f=color.split(","),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=parseInt(f[0].slice(4)),G=parseInt(f[1]),B=parseInt(f[2]);
+        return "rgb("+(Math.round((t-R)*p)+R)+","+(Math.round((t-G)*p)+G)+","+(Math.round((t-B)*p)+B)+")";
+    }
+    // var color1 = shade("rbg(63,131,163)", 0.5);
+    // var color2 = shade("#3f83a3", 0.5);
+    function shade(color, percent)
+    {
+        if (color.length > 7 ) return shadeRGBColor(color,percent);
+        else return shadeHexColor(color,percent);
+    }
+
     return (
-            <svg>
+        <svg>
             <defs>
-            <marker id="endtriangle"
-  viewBox="0 0 10 10" refX="0" refY="5" 
-  markerUnits="strokeWidth"
-  markerWidth="4" markerHeight="3"
-  orient="auto" overflow="visible">
-    <path d="M 0 0 L 10 5 L 0 10 z" />
-    </marker>
-    <marker id="starttriangle" overflow="visible"
-  viewBox="0 0 10 10" refX="5" refY="5" 
-  markerUnits="strokeWidth"
-  markerWidth="4" markerHeight="3"
-  orient="auto">
-    <path d="M -2 5 L 8 0 L 8 10 z" />
-    </marker>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="2.625" orient="auto">
+                    <polygon onClick={onClick} fill={shade(color, -.25)} points='0 0, 7.5 2.625, 0 5.25' />
+                </marker>
             </defs>
             <path
-                markerEnd='mid'
+                marker-end='url(#arrowhead)'
                 onClick={onClick}
                 className='Edge-Slice'
                 fill='none'
                 stroke={color}
                 strokeWidth='3'
                 d={d}
-            />
-            <path d={dd}/>
-            <polygon fill="red" stroke-width="0" points={pointtt} />
-            </svg>
+                />
+        </svg>
     )
 }
 

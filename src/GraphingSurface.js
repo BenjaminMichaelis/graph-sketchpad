@@ -121,6 +121,7 @@ function GraphingSurface(props)
         copy.splice(index, 1)
         setEdges(copy);
     }
+
     const colorEdge = (index, color) =>
     {
         const copy = [...edges];
