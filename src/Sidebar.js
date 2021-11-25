@@ -67,7 +67,9 @@ function Sidebar(props)
             {buttonData.map(element => makeButton(element))}
             {/* https://casesandberg.github.io/react-color/ */}
             <CirclePicker
+                colors={["#000000", "#f44336", "#e91e63", "#9c27b0", "#673ab7", "#3f51b5", "#2196f3", "#03a9f4", "#00bcd4", "#009688", "#4caf50", "#8bc34a", "#cddc39", "#ffeb3b", "#ffc107", "#ff9800", "#ff5722", "#795548", "#607d8b"]}
                 color={color}
+                circleSpacing={9}
                 onChange={(color, event) => setColor(color.hex)}
                 width="auto"
                 margin-top="15px"
@@ -75,6 +77,7 @@ function Sidebar(props)
                 margin-left="auto"
                 margin-right="auto"
                 height="auto"
+                background-color="lightgray"
             />
         </div>
     );
