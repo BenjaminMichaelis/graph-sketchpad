@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarButton from "./SidebarButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDotCircle, faMousePointer, faProjectDiagram, faTrash, faPaintBrush} from "@fortawesome/free-solid-svg-icons";
+import {faDotCircle, faMousePointer, faProjectDiagram, faTrash, faPaintBrush, faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import ClickAction from "./ClickAction";
 import './Sidebar.css'
 import './SidebarButton.css';
@@ -37,6 +37,10 @@ function Sidebar(props)
         {
             setClickAction(ClickAction.COLOR)
         }
+        else if(event.key === 't' || event.key === 'T')
+        {
+            setClickAction(ClickAction.ADD_DIRECTED_EDGE)
+        }
     }
 
     const makeButton = ({icon, name, currentClickAction}) =>
@@ -58,6 +62,7 @@ function Sidebar(props)
         {icon: <FontAwesomeIcon icon={faMousePointer}/>, name: 'Select (s)', currentClickAction: ClickAction.SELECT},
         {icon: <FontAwesomeIcon icon={faDotCircle}/>, name: 'New Vertex (v)', currentClickAction: ClickAction.ADD_VERTEX},
         {icon: <FontAwesomeIcon icon={faProjectDiagram}/>, name: 'New Edge (e)', currentClickAction: ClickAction.ADD_EDGE},
+        {icon: <FontAwesomeIcon icon={faArrowRight}/>, name: 'New Directed Edge (t)', currentClickAction: ClickAction.ADD_DIRECTED_EDGE},
         {icon: <FontAwesomeIcon icon={faTrash}/>, name: 'Delete (d)', currentClickAction: ClickAction.DELETE},
         {icon: <FontAwesomeIcon icon={faPaintBrush}/>, name: 'Color (c)', currentClickAction: ClickAction.COLOR}
     ]
