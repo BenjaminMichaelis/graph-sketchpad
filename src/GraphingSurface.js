@@ -44,6 +44,10 @@ function GraphingSurface(props)
         {
             startAddEdge(index)
         }
+        else if (clickAction === ClickAction.ADD_DIRECTED_EDGE)
+        {
+            startAddDirectedEdge(index)
+        }
         else if (clickAction === ClickAction.DELETE) 
         {
             removeVertex(index)
@@ -105,9 +109,29 @@ function GraphingSurface(props)
         }
         else
         {
-            addEdge({endpoints: [vertices[startEdge], vertices[index]], color: color})
+            addEdge({endpoints: [vertices[startEdge], vertices[index]], color: color, directedBool: false})
             setStartEdge(null)
         }
+    }
+
+    const startAddDirectedEdge = (index) =>
+    {
+        if(startEdge === null)
+        {
+            setStartEdge(index)
+        }
+        else
+        {
+            addDirectedEdge({endpoints: [vertices[startEdge], vertices[index]], color: color, directedBool: true})
+            setStartEdge(null)
+        }
+    }
+
+    const addDirectedEdge = (newEdge) =>
+    {
+        const copy = [...edges];
+        copy.push(newEdge)
+        setEdges(copy);
     }
 
     const edgesWithEndpoint = (vertex) => 
@@ -121,6 +145,7 @@ function GraphingSurface(props)
         copy.splice(index, 1)
         setEdges(copy);
     }
+
     const colorEdge = (index, color) =>
     {
         const copy = [...edges];
