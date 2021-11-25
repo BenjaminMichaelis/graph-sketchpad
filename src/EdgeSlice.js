@@ -39,15 +39,48 @@ function EdgeSlice(props)
              Q ${x3} ${y3} ${x2} ${y2}`
     }
 
+    function AngleBtw2Points()
+    {
+        const changeInX = x2 - x1
+        const changeInY = y2 - y1
+        let radians = (Math.atan2(changeInY,changeInX))
+        let degrees = (radians * 180) / Math.PI - 90; // rotate
+        console.log('angle to degree:',{changeInY,changeInX,radians,degrees})
+        return degrees;
+    }
+    let pointtt=`${x2},${y2} ${x2 + 20},${y2} ${x2+10},${y2-10}`
+    let deg = AngleBtw2Points()
+    let dd = `m ${x2} ${y2} ${deg -180},5l-10,5z`
     return (
-        <path
-            onClick={onClick}
-            className='Edge-Slice'
-            fill='transparent'
-            stroke={color}
-            strokeWidth='3'
-            d={d}
-        />
+            <svg>
+            <defs>
+            <marker id="endtriangle"
+  viewBox="0 0 10 10" refX="0" refY="5" 
+  markerUnits="strokeWidth"
+  markerWidth="4" markerHeight="3"
+  orient="auto" overflow="visible">
+    <path d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+    <marker id="starttriangle" overflow="visible"
+  viewBox="0 0 10 10" refX="5" refY="5" 
+  markerUnits="strokeWidth"
+  markerWidth="4" markerHeight="3"
+  orient="auto">
+    <path d="M -2 5 L 8 0 L 8 10 z" />
+    </marker>
+            </defs>
+            <path
+                markerEnd='mid'
+                onClick={onClick}
+                className='Edge-Slice'
+                fill='none'
+                stroke={color}
+                strokeWidth='3'
+                d={d}
+            />
+            <path d={dd}/>
+            <polygon fill="red" stroke-width="0" points={pointtt} />
+            </svg>
     )
 }
 
