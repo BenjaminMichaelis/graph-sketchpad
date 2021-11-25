@@ -11,6 +11,7 @@ A simple graph theory application (also known as a graph theorists sketchpad) th
 * Ability to color or label vertices
 * Information about numbers of vertices, edges, and components
 * Parallel edges and loops
+* Display of directed arcs (for directed graphs)
 
 ## To run locally
 
