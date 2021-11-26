@@ -1,0 +1,41 @@
+.Footer
+{
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    width:100%;
+    height: auto;
+    background: rgba(208, 218, 238, .5);
+    z-index: 9;
+}
+
+.p
+{
+    text-align: center;
+    margin: auto;
+    padding: auto;
+    font-size: smaller;
+}
+
+.span
+{
+    text-align: center;
+    margin: auto;
+    padding: auto;
+    font-size:larger;
+    color: black;
+}
+
+.link
+{
+   color:black;
+   text-decoration: none; 
+   background-color: none;
+}
+
+.contactlink
+{
+   color:black;
+   text-decoration: none; 
+   background-color: none;
+}

@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 import './App.css';
 import GraphingSurface from './GraphingSurface';
 import ClickAction from './ClickAction';
+import Footer from './Footer';
 
 function App() 
 {
@@ -22,6 +23,7 @@ function App()
             color={color}
             setColor={setColor}
         />
+        <Footer/>
         </div>
     );
 }
