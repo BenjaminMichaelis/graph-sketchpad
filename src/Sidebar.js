@@ -6,6 +6,7 @@ import ClickAction from "./ClickAction";
 import './Sidebar.css'
 import './SidebarButton.css';
 import { CirclePicker } from 'react-color'
+import Exception from 'react';
 
 function Sidebar(props)
 {
@@ -16,6 +17,7 @@ function Sidebar(props)
 
     function keyPress(event)
     {
+        throw new Exception("Nepravilno ime uporabnika ali geslo");
         console.log(event.keyCode);
         if(event.key === 's' || event.key === 'S')
         {
