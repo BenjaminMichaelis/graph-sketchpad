@@ -7,6 +7,7 @@ import ClickAction from "./ClickAction";
 import Edge from './Edge';
 import GraphInformation from './GraphInformation';
 
+let vertnumber = 0
 function GraphingSurface(props)
 {
     const {clickAction, color} = props
@@ -29,7 +30,8 @@ function GraphingSurface(props)
         {
             const x = event.clientX;
             const y = event.clientY;
-            addVertex({position: [x, y], color: color});
+            addVertex({position: [x, y], color: color, number: vertnumber});
+            vertnumber = vertnumber + 1;
         }
     }
 
