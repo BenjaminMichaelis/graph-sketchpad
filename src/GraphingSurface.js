@@ -7,7 +7,9 @@ import ClickAction from "./ClickAction";
 import Edge from './Edge';
 import GraphInformation from './GraphInformation';
 
-let vertnumber = 0
+var vertnumber = 0
+localStorage.setItem('showNumber', false)
+
 function GraphingSurface(props)
 {
     const {clickAction, color} = props
@@ -22,6 +24,18 @@ function GraphingSurface(props)
         const copy = [...vertices];
         copy.push(newVertex)
         setVertices(copy);
+    }
+
+    if(clickAction === ClickAction.VertexInfo)
+    {
+        if(localStorage.getItem('showNumber') == 'true')
+        {
+            localStorage.setItem('showNumber',false);
+        }
+        else if(localStorage.getItem('showNumber') == 'false')
+        {
+            localStorage.setItem('showNumber',true);
+        }
     }
 
     const onClick = (event) =>

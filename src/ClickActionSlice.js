@@ -24,5 +24,6 @@ export const {
     doAddDirectedEdge,
     doDelete,
     doColor,
+    VertexInfo,
     doCustom
 } = clickActionSlice.actions;

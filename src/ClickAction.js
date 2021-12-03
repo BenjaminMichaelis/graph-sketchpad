@@ -5,7 +5,8 @@ const ClickAction =
     ADD_EDGE: "AddEdge",
     ADD_DIRECTED_EDGE: "AddDirectedEdge",
     DELETE: "Delete",
-    COLOR: "Color"
+    COLOR: "Color",
+    VertexInfo: "Vertex Info"
 }
 
 export default ClickAction;

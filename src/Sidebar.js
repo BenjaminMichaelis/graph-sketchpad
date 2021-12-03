@@ -1,7 +1,7 @@
 import React from 'react';
 import SidebarButton from "./SidebarButton";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faDotCircle, faMousePointer, faProjectDiagram, faTrash, faPaintBrush, faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {faDotCircle, faMousePointer, faProjectDiagram, faTrash, faPaintBrush, faArrowRight, faInfo} from "@fortawesome/free-solid-svg-icons";
 import ClickAction from "./ClickAction";
 import './Sidebar.css'
 import './SidebarButton.css';
@@ -13,6 +13,7 @@ function Sidebar(props)
 
     // Handle keypress to change menu selection
     window.addEventListener('keydown', keyPress, true);
+    localStorage.setItem('showNumber',true);
 
     function keyPress(event)
     {
@@ -63,6 +64,7 @@ function Sidebar(props)
         {icon: <FontAwesomeIcon icon={faDotCircle}/>, name: 'New Vertex (v)', currentClickAction: ClickAction.ADD_VERTEX},
         {icon: <FontAwesomeIcon icon={faProjectDiagram}/>, name: 'New Edge (e)', currentClickAction: ClickAction.ADD_EDGE},
         {icon: <FontAwesomeIcon icon={faArrowRight}/>, name: 'New Directed Edge (t)', currentClickAction: ClickAction.ADD_DIRECTED_EDGE},
+        {icon: <FontAwesomeIcon icon={faInfo}/>, name: 'Show/Hide Vertex Info (i)', currentClickAction: ClickAction.VertexInfo},
         {icon: <FontAwesomeIcon icon={faTrash}/>, name: 'Delete (d)', currentClickAction: ClickAction.DELETE},
         {icon: <FontAwesomeIcon icon={faPaintBrush}/>, name: 'Color (c)', currentClickAction: ClickAction.COLOR}
     ]
