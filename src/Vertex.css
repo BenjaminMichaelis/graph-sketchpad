@@ -1,22 +1,39 @@
-.Vertex {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -0.5rem;
-    margin-top: -0.5rem;
-    width: 1rem;
-    height: 1rem;
-    background: black;
-    border-radius: 1rem;
-    z-index: 5;
+.Vertex
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -0.5rem;
+  margin-top: -0.5rem;
+  width: 1rem;
+  height: 1rem;
+  background: black;
+  border-radius: 1rem;
+  z-index: 5;
 }
 
-.Vertex.container {
-    position: fixed;
+.Vertex.container
+{
+  position: fixed;
 }
 
-.Vertex-Selected {
-    border-width: 0.2rem;
-    border-style: solid;
-    border-color: dodgerblue;
+.Vertex-Selected
+{
+  border-width: 0.2rem;
+  border-style: solid;
+  border-color: dodgerblue;
+}
+
+.noselect
+{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  pointer-events: none;
+  padding-top: 13px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
