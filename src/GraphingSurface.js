@@ -38,6 +38,7 @@ function GraphingSurface(props)
 
     const onVertexClick = (event, index) =>
     {
+        numDegreesAll()
         event.stopPropagation()
         if (clickAction === ClickAction.SELECT)
         {
@@ -272,6 +273,7 @@ function GraphingSurface(props)
 
     const onMouseMove = (event) =>
     {
+        numDegreesAll()
         if (dragging !== null)
         {
             event.preventDefault()

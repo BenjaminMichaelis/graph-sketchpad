@@ -10,7 +10,6 @@ function Vertex(props)
     const number = vertex.number;
     let degree = vertex.degree
 
-
     return (
         <div
             className={`Vertex ${className}`}
@@ -18,8 +17,9 @@ function Vertex(props)
             onMouseDown={onClick}
         >
         <div class="noselect">
-            {number}
-            {degree}
+            ID:{number} Deg:{degree}
+        </div>
+        <div class="degnoselect">
         </div>
         </div>
     );
