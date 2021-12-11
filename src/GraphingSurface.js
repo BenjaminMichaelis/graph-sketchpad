@@ -10,7 +10,7 @@ import GraphInformation from './GraphInformation';
 let vertnumber = 0
 function GraphingSurface(props)
 {
-    const {clickAction, color} = props
+    const {clickAction, color, degree} = props
     const [vertices, setVertices] = useState([]);
     const [startEdge, setStartEdge] = useState(null);
     const [dragging, setDragging] = useState(null);
@@ -26,11 +26,12 @@ function GraphingSurface(props)
 
     const onClick = (event) =>
     {
+        numDegreesAll()
         if (clickAction === ClickAction.ADD_VERTEX) 
         {
             const x = event.clientX;
             const y = event.clientY;
-            addVertex({position: [x, y], color: color, number: vertnumber});
+            addVertex({position: [x, y], color: color, number: vertnumber, degree: degree});
             vertnumber = vertnumber + 1;
         }
     }
@@ -184,6 +185,28 @@ function GraphingSurface(props)
         {
             return edge.endpoints
         }).flat().filter((otherVertex) => otherVertex !== vertex)
+    }
+
+    const numDegrees = (index) =>
+    {
+        const copy = [...vertices]
+        if(adjacentVertices(copy[index]).length != copy[index].degree)
+        {
+            copy[index].degree = adjacentVertices(copy[index]).length
+            setVertices(copy);
+        }
+    }
+
+    const numDegreesAll = () =>
+    {
+        let index = 0
+        const copy = [...vertices]
+        while (index < vertices.length)
+        {
+            copy[index].degree = adjacentVertices(copy[index]).length
+            index = index + 1
+        }
+        setVertices(copy);
     }
 
     const numComponents = () => 

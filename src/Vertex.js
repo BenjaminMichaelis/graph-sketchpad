@@ -8,6 +8,8 @@ function Vertex(props)
     const [x, y] = vertex.position;
     const color = vertex.color;
     const number = vertex.number;
+    let degree = vertex.degree
+
 
     return (
         <div
@@ -17,6 +19,7 @@ function Vertex(props)
         >
         <div class="noselect">
             {number}
+            {degree}
         </div>
         </div>
     );
