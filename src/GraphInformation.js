@@ -2,7 +2,7 @@ import React from "react";
 import './GraphInformation.css'
 
 function GraphInformation(props) {
-    const {numVertices, numEdges, numComponents, graphTypes, nullGraph, simpleGraph, TreeGraph, ForestGraph} = props
+    const {numVertices, numEdges, numComponents, graphTypes, nullGraph, simpleGraph, TreeGraph, ForestGraph, TrivialGraph} = props
     return (
       <div className='GraphInformation'>
           <div>Vertices: <strong>{numVertices}</strong></div>
@@ -12,6 +12,7 @@ function GraphInformation(props) {
           <div>Is Simple Graph: <strong>{simpleGraph.toString()}</strong></div>
           <div>is Tree Graph: <strong>{TreeGraph.toString()}</strong></div>
           <div>is Forest Graph: <strong>{ForestGraph.toString()}</strong></div>
+          <div>is Trivial Graph: <strong>{TrivialGraph.toString()}</strong></div>
       </div>
     );
 }

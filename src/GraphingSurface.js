@@ -253,22 +253,54 @@ function GraphingSurface(props)
             }
             endpointsSeen.push(edge)
         }
+        if (vertices.length == 2)
+        {
+            if (edges.length > vertices.length - 1)
+            {
+                return false
+            }
+        }
+        else if (vertices.length != 2)
+        {
+            if (edges.length > vertices.length)
+            {
+                return false
+            }
+        }
         return true
+    }
+
+    const isTrivialGraph = () =>
+    {
+        const endpointsSeen = []
+        for (const edge of edges)
+        {
+            if (edge.endpoints in endpointsSeen)
+            {
+                return false
+            }
+            else if (edge.endpoints[0] === edge.endpoints[1])
+            {
+                return false
+            }
+            endpointsSeen.push(edge)
+        }
+        return vertices.length === 1
     }
 
     const isNullGraph = () =>
     {
-        return vertices.length === 0
+        return edges.length === 0
     }
 
     const isTreeGraph = () =>
     {
-        return isForestGraph() && numComponents() === 1
+        return isForestGraph() && numComponents() === 1 && (vertices.length - 1 === edges.length)
     }
 
     const isForestGraph = () =>
     {
-        return numVertices() - numEdges() === numComponents() && isSimpleGraph()
+        return numVertices() - numEdges() === numComponents() && isSimpleGraph() && (vertices.length - 1 === edges.length)
     }
 
     const onMouseMove = (event) =>
@@ -312,6 +344,7 @@ function GraphingSurface(props)
                 simpleGraph={isSimpleGraph()}
                 TreeGraph={isTreeGraph()}
                 ForestGraph={isForestGraph()}
+                TrivialGraph={isTrivialGraph()}
             />
         </div>
     );
