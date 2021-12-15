@@ -243,7 +243,7 @@ function GraphingSurface(props)
         const endpointsSeen = []
         for (const edge of edges)
         {
-            if (edge.endpoints in endpointsSeen)
+            if (edge.endpoints in endpointsSeen || edge.overlappingEdges > 1)
             {
                 return false
             }
@@ -308,6 +308,10 @@ function GraphingSurface(props)
                 numVertices={numVertices()}
                 numEdges={numEdges()}
                 numComponents={numComponents()}
+                nullGraph={isNullGraph()}
+                simpleGraph={isSimpleGraph()}
+                TreeGraph={isTreeGraph()}
+                ForestGraph={isForestGraph()}
             />
         </div>
     );

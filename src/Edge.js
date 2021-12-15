@@ -7,6 +7,7 @@ function Edge(props)
     const {edges, onClick} = props
     const [offsetLeft, setOffsetLeft] = useState(null);
     const svg = useRef();
+    let overlappingEdges1 = 0
 
     useEffect(() =>
     {
@@ -28,24 +29,26 @@ function Edge(props)
                         || (edge.endpoints[0] === seenEndpoints[i].endpoints[1]
                             && edge.endpoints[1] === seenEndpoints[i].endpoints[0]))
                     {
-                        overlappingEdges = seenEndpoints[i].overlappingEdges;
+                        overlappingEdges = seenEndpoints[i].overlappingEdges
                         // increase the number of edges that are now overlapping to know where the next edge needs to be placed
                         seenEndpoints[i].overlappingEdges++;
                         return (
                             <EdgeSlice
-                                edge={edge}
-                                key={index}
-                                onClick={(event) => onClick(event, index)}
-                                offsetLeft={offsetLeft}
-                                overlappingEdges={overlappingEdges}
+                            edge={edge}
+                            key={index}
+                            onClick={(event) => onClick(event, index)}
+                            offsetLeft={offsetLeft}
+                            overlappingEdges={overlappingEdges}
                             />
-                        )
+                            )
+                        }
                     }
-                }
+                overlappingEdges1 = seenEndpoints.length
                 // If there are no edges that are overlapping (this isn't an edge we've drawn before) then
                 // just do what we were already doing, but make sure to save the information that the next edge 
                 // is no longer the first edge between these two vertices
                 seenEndpoints.push({endpoints: edge.endpoints, overlappingEdges: 1})
+                overlappingEdges1 = seenEndpoints.length
                 return (
                     <EdgeSlice
                         edge={edge}
