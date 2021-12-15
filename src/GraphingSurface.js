@@ -308,6 +308,10 @@ function GraphingSurface(props)
                 numVertices={numVertices()}
                 numEdges={numEdges()}
                 numComponents={numComponents()}
+                nullGraph={isNullGraph()}
+                simpleGraph={isSimpleGraph()}
+                TreeGraph={isTreeGraph()}
+                ForestGraph={isForestGraph()}
             />
         </div>
     );
