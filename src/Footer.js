@@ -1,6 +1,6 @@
 import React from "react";
 import './Footer.css'
-import {faGithub} from "@fortawesome/fontawesome-free-brands";
+// import {faGithub} from "@fortawesome/fontawesome-free-brands";
 
 
 function Footer()

@@ -214,38 +214,38 @@ function GraphingSurface(props)
         return components
     }
 
-    const isSimpleGraph = () =>
-    {
-        const endpointsSeen = []
-        for (const edge of edges)
-        {
-            if (edge.endpoints in endpointsSeen)
-            {
-                return false
-            }
-            else if (edge.endpoints[0] === edge.endpoints[1])
-            {
-                return false
-            }
-            endpointsSeen.push(edge)
-        }
-        return true
-    }
+    // const isSimpleGraph = () =>
+    // {
+    //     const endpointsSeen = []
+    //     for (const edge of edges)
+    //     {
+    //         if (edge.endpoints in endpointsSeen)
+    //         {
+    //             return false
+    //         }
+    //         else if (edge.endpoints[0] === edge.endpoints[1])
+    //         {
+    //             return false
+    //         }
+    //         endpointsSeen.push(edge)
+    //     }
+    //     return true
+    // }
 
-    const isNullGraph = () =>
-    {
-        return vertices.length === 0
-    }
+    // const isNullGraph = () =>
+    // {
+    //     return vertices.length === 0
+    // }
 
-    const isTreeGraph = () =>
-    {
-        return isForestGraph() && numComponents() === 1
-    }
+    // const isTreeGraph = () =>
+    // {
+    //     return isForestGraph() && numComponents() === 1
+    // }
 
-    const isForestGraph = () =>
-    {
-        return numVertices() - numEdges() === numComponents() && isSimpleGraph()
-    }
+    // const isForestGraph = () =>
+    // {
+    //     return numVertices() - numEdges() === numComponents() && isSimpleGraph()
+    // }
 
     const onMouseMove = (event) =>
     {

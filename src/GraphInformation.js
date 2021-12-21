@@ -2,7 +2,7 @@ import React from "react";
 import './GraphInformation.css'
 
 function GraphInformation(props) {
-    const {numVertices, numEdges, numComponents, graphTypes} = props
+    const {numVertices, numEdges, numComponents} = props
     return (
       <div className='GraphInformation'>
           <div>Vertices: <strong>{numVertices}</strong></div>
