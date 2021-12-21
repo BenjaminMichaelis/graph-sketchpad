@@ -1,4 +1,4 @@
-# [Graph Sketchpad](https://graphsketchpad.michaelis.net/)
+# <a href="https://graphsketchpad.michaelis.net/" target="_blank" rel="noreferrer noopener">Graph Sketchpad</a>
 
 A simple graph theory application (also known as a graph theorists sketchpad) that allows for the graphical display of vertices and edges.
 
@@ -21,4 +21,4 @@ As long as you don't have another application running this will be ready to view
 
 To build for production run `npm run build` and it will build the app for production to the `build` folder.
 
-Using [netlify](https://www.netlify.com/) to deploy the app live.
+Using <a href="https://www.netlify.com/" target="_blank" rel="noreferrer noopener">netlify</a> to deploy the app live.
