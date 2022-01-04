@@ -1,5 +1,7 @@
 # <a href="https://graphsketchpad.michaelis.net/" target="_blank" rel="noreferrer noopener">Graph Sketchpad</a>
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7d27862a-fb2e-44b0-978c-6f9813871be1/deploy-status)](https://app.netlify.com/sites/graphsketchpad/deploys)
+
 A simple graph theory application (also known as a graph theorists sketchpad) that allows for the graphical display of vertices and edges.
 
 ## Features
