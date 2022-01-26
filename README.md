@@ -17,6 +17,8 @@ A simple graph theory application (also known as a graph theorists sketchpad) th
 * Parallel edges and loops
 * Display of directed arcs (for directed graphs)
 
+![GraphSketchpadDemo](https://raw.githubusercontent.com/BenjaminMichaelis/graph-sketchpad/main/public/GraphSketchpadDemo.png)
+
 ## To run locally
 
 Clone to your local machine, and use the command `npm start` from the GraphSketchpad project directory to run the app in development mode.
