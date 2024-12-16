@@ -20,7 +20,7 @@
     "react-dom": "^18.3.1",
     "react-fontawesome": "^1.7.1",
     "react-moveable": "^0.56.0",
-    "react-redux": "^9.1.0",
+    "react-redux": "^9.2.0",
     "react-scripts": "^5.0.1"
   },
   "scripts": {
