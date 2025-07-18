@@ -15,7 +15,7 @@ function Vertex(props)
             style={{top: `${y}px`, left: `${x}px`, background: color}}
             onMouseDown={onClick}
         >
-        <div class="noselect">
+        <div className="noselect">
             {number}
         </div>
         </div>
